@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, Image, TextInput, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function OnboardingScreen(props) {
@@ -8,16 +8,15 @@ export default function OnboardingScreen(props) {
     name: "",
     age: "",
     mbti: "",
-    holland: "", // John Holland code (RIASEC)
+    holland: "", 
     humanValues: ""
   });
 
-  // generic setter: field name + value
+ 
   function handleChange(field, value) {
     setForm(prev => ({ ...prev, [field]: value }));
   }
 
-  // Continue handler: prefer prop callback if provided, otherwise navigate
   function handleContinue() {
     if (typeof props.onContinue === "function") {
       props.onContinue(form);
@@ -70,18 +69,31 @@ export default function OnboardingScreen(props) {
         numberOfLines={4}
       />
 
+      <Image
+              source={require("../assets/images/cat-mascot1.png")}
+              style={styles.mascot1}
+              resizeMode="contain"
+            />
+      <Image
+              source={require("../assets/images/star.png")}
+              style={styles.star}
+              resizeMode="contain"
+            />
+
       <Pressable style={styles.button} onPress={handleContinue}>
         <Text style={styles.buttonText}>Continue</Text>
       </Pressable>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24, backgroundColor: "#cfe3ef", justifyContent: "center" },
   title: { color: "#ffffffff", fontWeight: 10000, fontSize: 30, marginTop: -250, textAlign: "center" },
   input: { borderWidth: 1, borderColor: "#85a0da", backgroundColor: "#ffffffff", padding: 12, borderRadius: 8, marginBottom: 10, marginTop: 10 },
   multiline: { height: 50, textAlignVertical: "top" },
+  mascot1: { width: 200, height: 200, alignSelf: "left", marginTop: -50 },
+  star: { width: 100, height: 100, alignSelf: "left", marginTop: -150, marginRight: -20 },
+  title: { color: "#5566a7", fontSize: 28, marginBottom: 24 },
   button: { backgroundColor: "#8899db", padding: 12, borderRadius: 10, alignItems: "center", marginTop: 8 },
   buttonText: { color: "#fff", fontSize: 16 }
 });
