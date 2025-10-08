@@ -6,10 +6,10 @@ export default function HomeScreen({ onGoToMilestones }) {
   const router = useRouter();
   const [streak, setStreak] = useState(4);
   const [tasks, setTasks] = useState([
-    { text: "Learn 5 new words", done: false },
-    { text: "Do 1 writing task", done: false },
-    { text: "Review old lessons", done: false },
-    { text: "Practice listening", done: false }
+    { text: "Học 5 từ mới", done: false },
+    { text: "Làm task 1 writing", done: false },
+    { text: "Sửa bài cũ", done: false },
+    { text: "Luyện Listening", done: false }
   ]);
   const [mood, setMood] = useState(3); // 1..5
 
@@ -23,11 +23,11 @@ export default function HomeScreen({ onGoToMilestones }) {
 
   // Mood rating: 1..5 with emojis
   const moodEmojis = [
-    { label: "Very sad", emoji: "😢" },
-    { label: "Sad", emoji: "🙁" },
-    { label: "Neutral", emoji: "😐" },
-    { label: "Happy", emoji: "🙂" },
-    { label: "Very happy", emoji: "😀" }
+    { label: "Rất buồn", emoji: "😢" },
+    { label: "Buồn", emoji: "🙁" },
+    { label: "Bình thường", emoji: "😐" },
+    { label: "Vui", emoji: "🙂" },
+    { label: "Rất vui", emoji: "😀" }
   ];
 
   function handleSetMood(value) {
@@ -41,7 +41,7 @@ export default function HomeScreen({ onGoToMilestones }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Streak tracker for this week</Text>
+      <Text style={styles.header}>Streak tuần</Text>
 
       <View style={styles.streakRow}>
         {[...Array(7)].map((_, i) => {
@@ -60,7 +60,7 @@ export default function HomeScreen({ onGoToMilestones }) {
         })}
       </View>
 
-      <Text style={styles.subhead}>Today's tasks</Text>
+      <Text style={styles.subhead}>Nhiệm vụ hôm nay</Text>
       <FlatList
         data={tasks}
         keyExtractor={(item, idx) => String(idx)}
@@ -75,7 +75,7 @@ export default function HomeScreen({ onGoToMilestones }) {
       />
 
       {/* Mood tracker (1..5) */}
-      <Text style={styles.subhead}>How are you feeling today?</Text>
+      <Text style={styles.subhead}>Cảm xúc hôm nay</Text>
       <View style={styles.moodRow}>
         {moodEmojis.map((m, idx) => {
           const value = idx + 1;
@@ -97,9 +97,9 @@ export default function HomeScreen({ onGoToMilestones }) {
       </View>
 
       <View style={styles.milestoneRow}>
-        <Text style={styles.subhead}>Milestones</Text>
+        <Text style={styles.subhead}>Lộ trình mục tiêu</Text>
         <Pressable style={styles.linkButton} onPress={() => (onGoToMilestones ? onGoToMilestones() : router.push("/main/milestones"))}>
-          <Text style={styles.linkText}>Open Milestones</Text>
+          <Text style={styles.linkText}>Mở Lộ trình mục tiêu</Text>
         </Pressable>
       </View>
     </View>

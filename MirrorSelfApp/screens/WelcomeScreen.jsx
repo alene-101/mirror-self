@@ -12,7 +12,7 @@ export default function WelcomeScreen() {
         resizeMode="contain"
       />
         <Pressable style={styles.button} onPress={() => router.push("/onboarding")}>
-        <Text style={styles.buttonText}>Start</Text>
+        <Text style={styles.buttonText}>Bắt đầu</Text>
       </Pressable>
     </View>
   );
@@ -28,13 +28,6 @@ const styles = StyleSheet.create({
   },
   mascot: { width: 400, height: 400, marginBottom: 100 },
   title: { color: "#5566a7", fontSize: 28, marginBottom: 24 },
-  button: {
-    paddingVertical: 12,
-    paddingHorizontal: 28,
-    backgroundColor: "#8899db",
-    borderRadius: 16,
-    width: 100,
-    height: 50
-  },
+  button: { width: 150, padding: 12, backgroundColor: "#8899db", borderRadius: 16, height: 50},
   buttonText: { fontWeight: 500, color: "#fff", fontSize: 20, textAlign: "center" }
 });

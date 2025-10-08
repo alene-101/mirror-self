@@ -7,14 +7,14 @@ export default function MilestonesScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Milestones</Text>
-      <Text style={styles.item}>• Week 1-3: Build solid foundation</Text>
-      <Text style={styles.item}>• Week 4-8: Improve skills</Text>
-      <Text style={styles.item}>• Week 9-12: Get familiar with strategies</Text>
-      <Text style={styles.item}>• Week 13-15: Review and test</Text>
+      <Text style={styles.title}>Các cột mốc quan trọng:</Text>
+      <Text style={styles.item}>• Tuần 1 - 3: Xây nền vững chắc cho 4 kỹ năng IELTS</Text>
+      <Text style={styles.item}>• Tuần 4 - 8: Nâng cao từng kỹ năng theo format đề thi</Text>
+      <Text style={styles.item}>• Tuần 9 - 12: Làm quen với áp lực thời gian, chiến lược làm bài</Text>
+      <Text style={styles.item}>• Tuần 13 - 15: Tổng ôn và mô phỏng thi thử để đạt điểm mục tiêu</Text>
 
       <Pressable style={styles.backButton} onPress={() => router.back()}>
-        <Text style={styles.backText}>Back</Text>
+        <Text style={styles.backText}>Quay lại</Text>
       </Pressable>
     </View>
   );

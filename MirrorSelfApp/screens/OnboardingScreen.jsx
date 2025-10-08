@@ -27,18 +27,18 @@ export default function OnboardingScreen(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Please fill in the blank below:</Text>
+      <Text style={styles.title}>Vui lòng nhập thông tin vào bên dưới:</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Your name"
+        placeholder="Tên"
         value={form.name}
         onChangeText={(text) => handleChange("name", text)}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Your age"
+        placeholder="Tuổi"
         value={form.age}
         onChangeText={(text) => handleChange("age", text)}
         keyboardType="numeric"
@@ -46,7 +46,7 @@ export default function OnboardingScreen(props) {
 
       <TextInput
         style={styles.input}
-        placeholder="Your MBTI (e.g. INFP)"
+        placeholder="MBTI (ví dụ: INFP)"
         value={form.mbti}
         onChangeText={(text) => handleChange("mbti", text)}
         autoCapitalize="characters"
@@ -54,7 +54,7 @@ export default function OnboardingScreen(props) {
 
       <TextInput
         style={styles.input}
-        placeholder="Your John Holland Code (RIASEC)"
+        placeholder="John Holland Code (RIASEC)"
         value={form.holland}
         onChangeText={(text) => handleChange("holland", text)}
         autoCapitalize="characters"
@@ -62,11 +62,10 @@ export default function OnboardingScreen(props) {
 
       <TextInput
         style={[styles.input, styles.multiline]}
-        placeholder="Your Human Values (short list or description)"
+        placeholder="Human Values (list ngắn/miêu tả)"
         value={form.humanValues}
         onChangeText={(text) => handleChange("humanValues", text)}
-        multiline
-        numberOfLines={4}
+        numberOfLines={2}
       />
 
       <Image
@@ -81,19 +80,18 @@ export default function OnboardingScreen(props) {
             />
 
       <Pressable style={styles.button} onPress={handleContinue}>
-        <Text style={styles.buttonText}>Continue</Text>
+        <Text style={styles.buttonText}>Lưu & Tiếp tục</Text>
       </Pressable>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24, backgroundColor: "#cfe3ef", justifyContent: "center" },
-  title: { color: "#ffffffff", fontWeight: 10000, fontSize: 30, marginTop: -250, textAlign: "center" },
+  title: { color: "#fff", fontWeight: 10000, fontSize: 25, marginTop: -200, textAlign: "center" },
   input: { borderWidth: 1, borderColor: "#85a0da", backgroundColor: "#ffffffff", padding: 12, borderRadius: 8, marginBottom: 10, marginTop: 10 },
   multiline: { height: 50, textAlignVertical: "top" },
-  mascot1: { width: 200, height: 200, alignSelf: "left", marginTop: -50 },
-  star: { width: 100, height: 100, alignSelf: "left", marginTop: -150, marginRight: -20 },
-  title: { color: "#5566a7", fontSize: 28, marginBottom: 24 },
-  button: { backgroundColor: "#8899db", padding: 12, borderRadius: 10, alignItems: "center", marginTop: 8 },
-  buttonText: { color: "#fff", fontSize: 16 }
+  mascot1: { position: "absolute", width: 100, height: 90, marginBottom: 20, bottom: 100, left: 20 },
+  star: { position: "absolute", top: 20, left: 20, width: 100, height: 100},
+  button: { position: "absolute", width: 250, marginBottom: 20, bottom: 110, right: 50, padding:12, backgroundColor: "#8899db", padding: 12, borderRadius: 10 },
+  buttonText: { color: "#fff", fontSize: 16, textAlign: "center", fontWeight: "600" }
 });
