@@ -1,5 +1,5 @@
 import React from "react";
-import Onboarding from "../screens/Onboarding";
+import Onboarding from "../../screens/Onboarding.jsx";
 
 export default function OnboardingRoute() {
   return <Onboarding />;

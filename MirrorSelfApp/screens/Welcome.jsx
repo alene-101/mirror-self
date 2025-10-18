@@ -13,7 +13,7 @@ export default function Welcome() {
       />
         <Pressable
   style={styles.button}
-  onPress={() => router.push("/main/onboarding")}
+  onPress={() => router.push("/main/profile")}
 >
   <Text style={styles.buttonText}>Bắt đầu</Text>
 </Pressable>
