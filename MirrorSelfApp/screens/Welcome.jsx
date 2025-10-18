@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
-export default function WelcomeScreen() {
+export default function Welcome() {
   const router = useRouter();
   return (
     <View style={styles.container}>
@@ -11,9 +11,12 @@ export default function WelcomeScreen() {
         style={styles.mascot}
         resizeMode="contain"
       />
-        <Pressable style={styles.button} onPress={() => router.push("/onboarding")}>
-        <Text style={styles.buttonText}>Bắt đầu</Text>
-      </Pressable>
+        <Pressable
+  style={styles.button}
+  onPress={() => router.push("/main/onboarding")}
+>
+  <Text style={styles.buttonText}>Bắt đầu</Text>
+</Pressable>
     </View>
   );
 }

@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1CO8o9xmOMoUyBxTc9qhjeDQaxKV_Vk14
 """
 
-!pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client dateparser openai
+# !pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client dateparser openai
 
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 import torch

@@ -2,27 +2,33 @@ import React, { useState } from "react";
 import { View, Text, Image, TextInput, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
-export default function OnboardingScreen(props) {
+export default function Onboarding({ onContinue }) {
   const router = useRouter();
+      function handleContinue() {
+      if (typeof props.onContinue === "function") {
+        props.onContinue(form);
+        return;
+      }
+      router.push("/profile");
+    }
   const [form, setForm] = useState({
     name: "",
     age: "",
     mbti: "",
-    holland: "", 
+    holland: "",
     humanValues: ""
   });
 
- 
   function handleChange(field, value) {
     setForm(prev => ({ ...prev, [field]: value }));
   }
 
   function handleContinue() {
-    if (typeof props.onContinue === "function") {
-      props.onContinue(form);
+    if (typeof onContinue === "function") {
+      onContinue(form);
       return;
     }
-    router.push("/main");
+    router.push({ pathname: "/home", params: form });
   }
 
   return (
@@ -69,29 +75,30 @@ export default function OnboardingScreen(props) {
       />
 
       <Image
-              source={require("../assets/images/cat-mascot1.png")}
-              style={styles.mascot1}
-              resizeMode="contain"
-            />
+        source={require("../assets/images/cat-mascot1.png")}
+        style={styles.mascot1}
+        resizeMode="contain"
+      />
       <Image
-              source={require("../assets/images/star.png")}
-              style={styles.star}
-              resizeMode="contain"
-            />
+        source={require("../assets/images/star.png")}
+        style={styles.star}
+        resizeMode="contain"
+      />
 
-      <Pressable style={styles.button} onPress={handleContinue}>
+      <Pressable style={styles.button} onPress={() => router.push("/main/home")}>
         <Text style={styles.buttonText}>Lưu & Tiếp tục</Text>
       </Pressable>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24, backgroundColor: "#cfe3ef", justifyContent: "center" },
-  title: { color: "#fff", fontWeight: 10000, fontSize: 25, marginTop: -200, textAlign: "center" },
-  input: { borderWidth: 1, borderColor: "#85a0da", backgroundColor: "#ffffffff", padding: 12, borderRadius: 8, marginBottom: 10, marginTop: 10 },
+  title: { color: "#fff", fontWeight: "700", fontSize: 25, marginTop: -200, textAlign: "center" },
+  input: { borderWidth: 1, borderColor: "#85a0da", backgroundColor: "#fff", padding: 12, borderRadius: 8, marginBottom: 10, marginTop: 10 },
   multiline: { height: 50, textAlignVertical: "top" },
   mascot1: { position: "absolute", width: 100, height: 90, marginBottom: 20, bottom: 100, left: 20 },
-  star: { position: "absolute", top: 20, left: 20, width: 100, height: 100},
-  button: { position: "absolute", width: 250, marginBottom: 20, bottom: 110, right: 50, padding:12, backgroundColor: "#8899db", padding: 12, borderRadius: 10 },
+  star: { position: "absolute", top: 20, left: 20, width: 100, height: 100 },
+  button: { position: "absolute", width: 250, marginBottom: 20, bottom: 110, right: 50, padding: 12, backgroundColor: "#8899db", borderRadius: 10 },
   buttonText: { color: "#fff", fontSize: 16, textAlign: "center", fontWeight: "600" }
 });

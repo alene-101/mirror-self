@@ -2,9 +2,15 @@ import React from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
-export default function MilestonesScreen() {
+export default function Milestones(props) {
   const router = useRouter();
-
+  function handleContinue() {
+    if (typeof props.onContinue === "function") {
+      props.onContinue(form);
+      return;
+    }
+    router.push("/main");
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Các cột mốc quan trọng:</Text>
@@ -20,8 +26,8 @@ export default function MilestonesScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#fff" },
+export const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20, backgroundColor: "#cfe3ef" },
   title: { fontSize: 22, marginBottom: 12 },
   item: { fontSize: 16, marginBottom: 6 },
   backButton: { marginTop: 20, backgroundColor: "#8899db", padding: 10, borderRadius: 8, alignItems: "center" },
